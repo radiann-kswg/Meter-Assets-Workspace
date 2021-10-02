@@ -57,7 +57,8 @@ public class DemoAnimationDirector : MonoBehaviour
         }
         if (rotaryMeter)
         {
-            rotaryMeter.Value += Time.deltaTime * (1.0f - _t / animationT);
+            float valanp = 3450000f;
+            rotaryMeter.Value = Mathf.Sin(_t / animationT * 2.0f * Mathf.PI) * valanp + valanp;
         }
         _t += Time.deltaTime;
         _t = Mathf.Repeat(_t, animationT);
