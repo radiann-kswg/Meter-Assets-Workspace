@@ -10,25 +10,25 @@ public class LevelGageDirector : MonoBehaviour
     /// レベルゲージを図示するImage
     /// </summary>
     [SerializeField]
-    private Image gageImage;
+    private Image _gageImage;
 
     /// <summary>
     /// レベルゲージの背部Image
     /// </summary>
     [SerializeField]
-    private Image backgroundImage;
+    private Image _backgroundImage;
 
     /// <summary>
     /// レベルを表示するText
     /// </summary>
     [SerializeField]
-    private Text levelText;
+    private Text _levelText;
 
     /// <summary>
     /// レベルごとに表示するゲージの色
     /// </summary>
     [SerializeField]
-    private Color32[] gageColorList;
+    private Color32[] _gageColorList;
     #endregion
 
     #region private変数定義
@@ -45,10 +45,10 @@ public class LevelGageDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(gageColorList != null) {
-            if (gageColorList.Length > 1 && gageImage && levelText)
+        if(_gageColorList != null) {
+            if (_gageColorList.Length > 1 && _gageImage && _levelText)
             {
-                UpdateUIs();
+                _UpdateUIs();
             }
         }
     }
@@ -56,11 +56,11 @@ public class LevelGageDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gageColorList != null)
+        if (_gageColorList != null)
         {
-            if (gageColorList.Length > 1 && gageImage && levelText)
+            if (_gageColorList.Length > 1 && _gageImage && _levelText)
             {
-                UpdateUIs();
+                _UpdateUIs();
             }
         }
     }
@@ -87,21 +87,21 @@ public class LevelGageDirector : MonoBehaviour
     /// <summary>
     /// UIを更新します
     /// </summary>
-    private void UpdateUIs()
+    private void _UpdateUIs()
     {
-        if(_level >= gageColorList.Length - 1)
+        if(_level >= _gageColorList.Length - 1)
         {
-            _level = gageColorList.Length - 1;
+            _level = _gageColorList.Length - 1;
             _gageProgress = 100.0f;
-            gageImage.color = gageColorList[_level];
+            _gageImage.color = _gageColorList[_level];
         }
         else
         {
-            gageImage.color = gageColorList[_level + 1];
+            _gageImage.color = _gageColorList[_level + 1];
         }
-        backgroundImage.color = gageColorList[_level];
-        gageImage.fillAmount = _gageProgress;
-        levelText.text = _level.ToString();
+        _backgroundImage.color = _gageColorList[_level];
+        _gageImage.fillAmount = _gageProgress;
+        _levelText.text = _level.ToString();
     }
     #endregion
 }

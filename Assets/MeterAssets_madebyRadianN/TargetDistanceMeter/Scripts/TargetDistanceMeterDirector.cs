@@ -13,19 +13,19 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// ターゲット名を表示するText
     /// </summary>
     [SerializeField]
-    private Text targetNameText;
+    private Text _targetNameText;
 
     /// <summary>
     /// ターゲットとの距離を表示するText
     /// </summary>
     [SerializeField]
-    private Text targetDistanceText;
+    private Text _targetDistanceText;
 
     /// <summary>
     /// 照準アイコン
     /// </summary>
     [SerializeField]
-    private FocusIconDirector focusIcon;
+    private FocusIconDirector _focusIcon;
 
     /// <summary>
     /// Transform値から距離値への変換係数
@@ -42,56 +42,56 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// <summary>
     /// 追従する最大距離値[Transform単位]
     /// </summary>
-    private const float maxDistanceOfFocusToTarget = 25.0f;
+    private const float _MAX_DISTANCE = 25.0f;
 
     /// <summary>
     /// 距離値[表示単位]
     /// </summary>
-    private float distance = 34.5678f;
+    private float _distance = 34.5678f;
 
     /// <summary>
     /// 距離値[Transform単位]
     /// </summary>
-    private float distanceByTransformUnit = maxDistanceOfFocusToTarget * 2.0f;
+    private float _distanceByTransformUnit = _MAX_DISTANCE * 2.0f;
         
     /// <summary>
     /// ターゲット
     /// </summary>
-    private GameObject targetObject;
+    private GameObject _targetObject;
 
     /// <summary>
     /// ターゲット名（無指定の場合: gameObject.name）
     /// </summary>
-    private string targetName = "";
+    private string _targetName = "";
 
     /// <summary>
     /// このUIを表示しているCanvas(親オブジェクト)
     /// </summary>
-    private Canvas thisCanvas;
+    private Canvas _thisCanvas;
 
     /// <summary>
     /// このUIを投影しているCamera（thisCanvasから参照）
     /// </summary>
-    private Camera thisWorldCamera;
+    private Camera _thisWorldCamera;
 
     /// <summary>
     /// 接近フラグ（trueでUI表示）
     /// </summary>
-    private bool isTargetCloth = false;
+    private bool _isTargetCloth = false;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        if (TransformUnit2DistanceUnit > 0.0f)
+        if (_ReturnFocusFlag())
         {
-            thisCanvas = gameObject.GetComponentInParent<Canvas>();
-            thisWorldCamera = thisCanvas.worldCamera;
-            if (!thisWorldCamera) thisWorldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            _thisCanvas = gameObject.GetComponentInParent<Canvas>();
+            _thisWorldCamera = _thisCanvas.worldCamera;
+            if (!_thisWorldCamera) _thisWorldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-            if (thisWorldCamera && targetNameText && targetDistanceText && focusIcon)
+            if (_thisWorldCamera && _targetNameText && _targetDistanceText && _focusIcon)
             {
-                UpdateUIs();
+                _UpdateUIs();
             }
         }
     }
@@ -99,11 +99,11 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TransformUnit2DistanceUnit > 0.0f)
+        if (_ReturnFocusFlag())
         {
-            if (thisWorldCamera && targetNameText && targetDistanceText && focusIcon)
+            if (_ReturnUpdateFlag())
             {
-                UpdateUIs();
+                _UpdateUIs();
             }
         }
     }
@@ -113,63 +113,70 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// </summary>
     /// <param name="target">ターゲットのGameObject（nullで追従解除）</param>
     /// <param name="name">ターゲットの名前指定（指定なしの場合: target(.gameObject).name）</param>
-    public void SetTarget(GameObject target, string name = "")
+    /// <param name="isNullName">ターゲットの名前を表示しない（trueで非表示,デフォルト：false）</param>
+    public void SetTarget(GameObject target, string name = "", bool isNullName = false)
     {
-        targetObject = target;
-        focusIcon.TargetTfm = target.transform;
-        targetName = name;
+        _targetObject = target;
+        _focusIcon.TargetTfm = target.transform;
+        if (isNullName) _targetName = "";
+        else _targetName = name == "" ? target.name : name;
     }
 
     #region private関数
     /// <summary>
     /// UIを更新します
     /// </summary>
-    private void UpdateUIs()
+    private void _UpdateUIs()
     {
-        if (targetObject)
+        if (!_targetObject)
         {
-            Rect rect = new Rect(0, 0, 1, 1);
-            Vector3 vp = thisWorldCamera.WorldToViewportPoint(targetObject.transform.position);
-            if (rect.Contains(vp) && vp.z > 0.0f)
-            {
-                distanceByTransformUnit = Vector3.Distance(
-                    thisWorldCamera.gameObject.transform.position, targetObject.transform.position);
-                distance = distanceByTransformUnit * TransformUnit2DistanceUnit;
-                isTargetCloth = distanceByTransformUnit < maxDistanceOfFocusToTarget;
-
-                if (isTargetCloth)
-                {
-                    SetUIsActive(true);
-
-                    if (targetName == "") targetNameText.text = targetObject.name;
-                    else targetNameText.text = targetName;
-                    targetDistanceText.text = distance.ToString("G6") + DistanceUnitName;
-                }
-                else
-                {
-                    SetUIsActive(false);
-                }
-            }
-            else
-            {
-                SetUIsActive(false);
-            }
+            _SetUIsActive(false);
+            return;
         }
-        else
+
+        Rect rect = new Rect(0, 0, 1, 1);
+        Vector3 vp = _thisWorldCamera.WorldToViewportPoint(_targetObject.transform.position);
+        if (!(rect.Contains(vp) && vp.z > 0.0f))
         {
-            SetUIsActive(false);
+            _SetUIsActive(false);
+            return;
         }
+
+        _distanceByTransformUnit = Vector3.Distance(
+            _thisWorldCamera.gameObject.transform.position, _targetObject.transform.position);
+        _distance = _distanceByTransformUnit * TransformUnit2DistanceUnit;
+        _isTargetCloth = _distanceByTransformUnit < _MAX_DISTANCE;
+
+        if (!_isTargetCloth)
+        {
+            _SetUIsActive(false);
+            return;
+        }
+
+        _SetUIsActive(true);
+
+        _targetNameText.text = _targetName;
+        _targetDistanceText.text = _distance.ToString("G6") + DistanceUnitName;
     }
 
     /// <summary>
     /// UIのgameObject.SetActive関数を一括操作します
     /// </summary>
     /// <param name="isActive">gameObject.SetActive関数の引数</param>
-    private void SetUIsActive(bool isActive)
+    private void _SetUIsActive(bool isActive)
     {
-        targetNameText.gameObject.SetActive(isActive);
-        targetDistanceText.gameObject.SetActive(isActive);
-        focusIcon.gameObject.SetActive(isActive);
+        _targetNameText.gameObject.SetActive(isActive);
+        _targetDistanceText.gameObject.SetActive(isActive);
+        _focusIcon.gameObject.SetActive(isActive);
+    }
+
+    private bool _ReturnFocusFlag()
+    {
+        return TransformUnit2DistanceUnit > 0.0f;
+    }
+    private bool _ReturnUpdateFlag()
+    {
+        return _thisWorldCamera && _targetNameText && _targetDistanceText && _focusIcon;
     }
     #endregion
 }

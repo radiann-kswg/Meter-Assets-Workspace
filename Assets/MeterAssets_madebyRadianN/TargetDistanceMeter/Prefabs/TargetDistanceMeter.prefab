@@ -50,11 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa8de551269c20468fc704e1c790e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetNameText: {fileID: 6493185184953720521}
-  targetDistanceText: {fileID: 6493185185010105044}
-  focusIcon: {fileID: 6493185184877974755}
-  transformUnit2DistanceUnit: 1
-  distanceUnitName: m
+  _targetNameText: {fileID: 6493185184953720521}
+  _targetDistanceText: {fileID: 6493185185010105044}
+  _focusIcon: {fileID: 6493185184877974755}
+  TransformUnit2DistanceUnit: 1
+  DistanceUnitName: m
 --- !u!1 &6493185184520082498
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a21dab90b1cf234692f4e864f098f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTfm: {fileID: 0}
+  TargetTfm: {fileID: 0}
 --- !u!1 &6493185184953720519
 GameObject:
   m_ObjectHideFlags: 0

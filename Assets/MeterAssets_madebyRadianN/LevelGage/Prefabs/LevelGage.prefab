@@ -50,30 +50,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849a26937aeca804ead4c111d1d79842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gageImage: {fileID: 2135405243596223691}
-  backgroundImage: {fileID: 2135405243599789123}
-  levelText: {fileID: 2135405244223362793}
-  gageColorList:
+  _gageImage: {fileID: 2135405243596223691}
+  _backgroundImage: {fileID: 2135405243599789123}
+  _levelText: {fileID: 2135405244223362793}
+  _gageColorList:
   - serializedVersion: 2
     rgba: 4294967295
   - serializedVersion: 2
-    rgba: 4294967231
+    rgba: 4292277688
   - serializedVersion: 2
-    rgba: 4294967167
+    rgba: 4294309243
   - serializedVersion: 2
-    rgba: 4294951039
+    rgba: 4294293371
   - serializedVersion: 2
-    rgba: 4294934399
+    rgba: 4294343290
   - serializedVersion: 2
-    rgba: 4294934463
+    rgba: 4294271660
   - serializedVersion: 2
-    rgba: 4294934527
+    rgba: 4294265589
   - serializedVersion: 2
-    rgba: 4288643071
-  - serializedVersion: 2
-    rgba: 4283387903
-  - serializedVersion: 2
-    rgba: 4278223103
+    rgba: 4287836661
 --- !u!1 &2135405243596223689
 GameObject:
   m_ObjectHideFlags: 0

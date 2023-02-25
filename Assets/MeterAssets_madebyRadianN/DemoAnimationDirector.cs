@@ -4,63 +4,64 @@ using UnityEngine;
 
 public class DemoAnimationDirector : MonoBehaviour
 {
-    public ProgressGageDirector progressGage;
-
-    public LevelGageDirector levelGage;
-
-    public GameObject targetObject;
-
-    public TargetDistanceMeterDirector targetDistanceMeter;
-
-    public RotaryMeterManager rotaryMeter;
+    [SerializeField]
+    private ProgressGageDirector _progressGage;
+    [SerializeField]
+    private LevelGageDirector _levelGage;
+    [SerializeField]
+    private GameObject _targetObject;
+    [SerializeField]
+    private TargetDistanceMeterDirector _targetDistanceMeter;
+    [SerializeField]
+    private RotaryMeterManager _rotaryMeter;
 
     private float _t = 0.0f;
 
     /// <summary>
     /// アニメーション周期[秒]
     /// </summary>
-    public float animationT = 2.5f;
+    public float AnimationT = 2.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (targetDistanceMeter && targetObject)
+        if (_targetDistanceMeter && _targetObject)
         {
-            targetDistanceMeter.SetTarget(targetObject);
+            _targetDistanceMeter.SetTarget(_targetObject);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        RunDemoAnimation();
+        _RunDemoAnimation();
     }
 
-    private void RunDemoAnimation()
+    private void _RunDemoAnimation()
     {
-        if (progressGage)
+        if (_progressGage)
         {
-            float progress = _t / animationT;
-            progressGage.SetValue(progress);
+            float progress = _t / AnimationT;
+            _progressGage.SetValue(progress);
         }
-        if (levelGage)
+        if (_levelGage)
         {
-            float levelValue = Mathf.Sin(_t / animationT * 360.0f * Mathf.Deg2Rad) * 2.5f + 3.5f;
-            levelGage.SetLevel(levelValue);
+            float levelValue = Mathf.Sin(_t / AnimationT * 360.0f * Mathf.Deg2Rad) * 2.5f + 3.5f;
+            _levelGage.SetLevel(levelValue);
         }
-        if (targetObject)
+        if (_targetObject)
         {
-            float positionZ = Mathf.Sin(_t / animationT * 360.0f * Mathf.Deg2Rad) * 13.5f;
-            float positionX = Mathf.Sin(_t / animationT * 720.0f * Mathf.Deg2Rad) * 5.0f;
-            float positionY = targetObject.transform.position.y;
-            targetObject.transform.position = new Vector3(positionX, positionY, positionZ);
+            float positionZ = Mathf.Sin(_t / AnimationT * 360.0f * Mathf.Deg2Rad) * 13.5f;
+            float positionX = Mathf.Sin(_t / AnimationT * 720.0f * Mathf.Deg2Rad) * 5.0f;
+            float positionY = _targetObject.transform.position.y;
+            _targetObject.transform.position = new Vector3(positionX, positionY, positionZ);
         }
-        if (rotaryMeter)
+        if (_rotaryMeter)
         {
             float valanp = 3450000f;
-            rotaryMeter.Value = Mathf.Sin(_t / animationT * 2.0f * Mathf.PI) * valanp + valanp;
+            _rotaryMeter.Value = Mathf.Sin(_t / AnimationT * 2.0f * Mathf.PI) * valanp + valanp;
         }
         _t += Time.deltaTime;
-        _t = Mathf.Repeat(_t, animationT);
+        _t = Mathf.Repeat(_t, AnimationT);
     }
 }

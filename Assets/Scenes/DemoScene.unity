@@ -409,12 +409,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf04ea1bfde169145a1ff6fe1e75ba45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressGage: {fileID: 315575665}
-  levelGage: {fileID: 1673401795}
-  targetObject: {fileID: 2005791581}
-  targetDistanceMeter: {fileID: 1210832562}
-  rotaryMeter: {fileID: 8405310622761900268}
-  animationT: 2.5
+  _progressGage: {fileID: 315575665}
+  _levelGage: {fileID: 1673401795}
+  _targetObject: {fileID: 2005791581}
+  _targetDistanceMeter: {fileID: 1210832562}
+  _rotaryMeter: {fileID: 8405310622761900268}
+  AnimationT: 2.5
 --- !u!4 &1129241263
 Transform:
   m_ObjectHideFlags: 0

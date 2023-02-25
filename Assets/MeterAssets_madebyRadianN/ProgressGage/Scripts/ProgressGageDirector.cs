@@ -10,13 +10,13 @@ public class ProgressGageDirector : MonoBehaviour
     /// 進捗を図示するSlider
     /// </summary>
     [SerializeField]
-    private Slider progressSlider;
+    private Slider _progressSlider;
 
     /// <summary>
     /// 進捗値を表示するText
     /// </summary>
     [SerializeField]
-    private Text progressText;
+    private Text _progressText;
     #endregion
 
     #region private変数定義
@@ -34,7 +34,7 @@ public class ProgressGageDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(progressSlider && progressText)
+        if(_progressSlider && _progressText)
         {
             UpdateUIs();
         }
@@ -43,7 +43,7 @@ public class ProgressGageDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (progressSlider && progressText)
+        if (_progressSlider && _progressText)
         {
             UpdateUIs();
         }
@@ -74,7 +74,7 @@ public class ProgressGageDirector : MonoBehaviour
     /// <returns>引数が有効かどうか</returns>
     public bool SetPercent(float valueByPercent)
     {
-        if (valueByPercent < 0.0f || valueByPercent > 1.00f)
+        if (valueByPercent < 0.0f || valueByPercent > 100.0f)
         {
             Debug.Log("[ProgressGage]" +
                 "不正な値です、引数valueByPercentは0.0以上1.0未満で指定してください");
@@ -91,8 +91,8 @@ public class ProgressGageDirector : MonoBehaviour
     /// </summary>
     private void UpdateUIs()
     {
-        progressSlider.value = _percent;
-        progressText.text = _progress.ToString("0.0%");
+        _progressSlider.value = _percent;
+        _progressText.text = _progress.ToString("0.0%");
     }
     #endregion
 }
