@@ -42,7 +42,8 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// <summary>
     /// 追従する最大距離値[Transform単位]
     /// </summary>
-    private const float _MAX_DISTANCE = 25.0f;
+    [SerializeField]
+    private float _maxDistance = 35.0f;
 
     /// <summary>
     /// 距離値[表示単位]
@@ -52,7 +53,7 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// <summary>
     /// 距離値[Transform単位]
     /// </summary>
-    private float _distanceByTransformUnit = _MAX_DISTANCE * 2.0f;
+    private float _distanceByTransformUnit;
         
     /// <summary>
     /// ターゲット
@@ -83,13 +84,15 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _distance = _maxDistance * 2.0f;
+
         if (_ReturnFocusFlag())
         {
             _thisCanvas = gameObject.GetComponentInParent<Canvas>();
             _thisWorldCamera = _thisCanvas.worldCamera;
             if (!_thisWorldCamera) _thisWorldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-            if (_thisWorldCamera && _targetNameText && _targetDistanceText && _focusIcon)
+            if (_ReturnUpdateFlag())
             {
                 _UpdateUIs();
             }
@@ -145,7 +148,7 @@ public class TargetDistanceMeterDirector : MonoBehaviour
         _distanceByTransformUnit = Vector3.Distance(
             _thisWorldCamera.gameObject.transform.position, _targetObject.transform.position);
         _distance = _distanceByTransformUnit * TransformUnit2DistanceUnit;
-        _isTargetCloth = _distanceByTransformUnit < _MAX_DISTANCE;
+        _isTargetCloth = _distanceByTransformUnit < _maxDistance;
 
         if (!_isTargetCloth)
         {
