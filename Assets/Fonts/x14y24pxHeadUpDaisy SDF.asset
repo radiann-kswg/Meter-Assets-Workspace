@@ -54,9 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: x14y24pxHeadUpDaisy SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 434578384
   material: {fileID: 1839227784942333313}
-  materialHashCode: 0
+  materialHashCode: -447009296
   m_Version: 1.1.0
   m_SourceFontFileGUID: 37d694c91e604934fae83f7fdeed2293
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 37d694c91e604934fae83f7fdeed2293,
@@ -2650,9 +2650,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
