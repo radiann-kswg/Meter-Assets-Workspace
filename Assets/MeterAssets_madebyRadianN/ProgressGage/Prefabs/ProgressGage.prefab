@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressSlider: {fileID: 5273472161547278180}
-  _progressText: {fileID: 0}
+  _progressText: {fileID: 4643941344107290740}
 --- !u!1 &5273472162742220405
 GameObject:
   m_ObjectHideFlags: 0

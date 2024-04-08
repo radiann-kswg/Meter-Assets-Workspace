@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TargetDistanceMeterDirector : MonoBehaviour
 {
@@ -13,13 +14,13 @@ public class TargetDistanceMeterDirector : MonoBehaviour
     /// ターゲット名を表示するText
     /// </summary>
     [SerializeField]
-    private Text _targetNameText;
+    private TextMeshProUGUI _targetNameText;
 
     /// <summary>
     /// ターゲットとの距離を表示するText
     /// </summary>
     [SerializeField]
-    private Text _targetDistanceText;
+    private TextMeshProUGUI _targetDistanceText;
 
     /// <summary>
     /// 照準アイコン

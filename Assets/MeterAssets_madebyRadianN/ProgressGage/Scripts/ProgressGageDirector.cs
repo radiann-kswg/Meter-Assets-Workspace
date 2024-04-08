@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ProgressGageDirector : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ProgressGageDirector : MonoBehaviour
     /// 進捗値を表示するText
     /// </summary>
     [SerializeField]
-    private Text _progressText;
+    private TextMeshProUGUI _progressText;
     #endregion
 
     #region private変数定義

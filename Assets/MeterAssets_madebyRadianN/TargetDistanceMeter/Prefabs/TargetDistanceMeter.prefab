@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa8de551269c20468fc704e1c790e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetNameText: {fileID: 0}
-  _targetDistanceText: {fileID: 0}
+  _targetNameText: {fileID: 3113374937782276095}
+  _targetDistanceText: {fileID: 2307579503167328509}
   _focusIcon: {fileID: 6493185184877974755}
   TransformUnit2DistanceUnit: 1
   DistanceUnitName: m

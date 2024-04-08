@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelGageDirector : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class LevelGageDirector : MonoBehaviour
     /// レベルを表示するText
     /// </summary>
     [SerializeField]
-    private Text _levelText;
+    private TextMeshProUGUI _levelText;
 
     /// <summary>
     /// レベルごとに表示するゲージの色

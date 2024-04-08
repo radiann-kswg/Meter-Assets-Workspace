@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gageImage: {fileID: 2135405243596223691}
   _backgroundImage: {fileID: 2135405243599789123}
-  _levelText: {fileID: 0}
+  _levelText: {fileID: 8498476994055241406}
   _gageColorList:
   - serializedVersion: 2
     rgba: 4294967295
