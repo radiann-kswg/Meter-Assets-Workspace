@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 972344209010140991}
   - component: {fileID: 5877680020845032490}
   m_Layer: 0
-  m_Name: RotalyMeter
+  m_Name: RotaryMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223901162865140183}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4274810710134653960}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5877680020845032490
 MonoBehaviour:
@@ -58,6 +59,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -133,10 +135,19 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (2)
+      value: RotaryMeter_Roter (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
+--- !u!4 &269825035952278864 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 302907815755524795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &645506630745659370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -148,6 +159,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -223,13 +235,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (3)
+      value: RotaryMeter_Roter (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
 --- !u!1 &317910246834504035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 623775480000691250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1090611098324261849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
     type: 3}
   m_PrefabInstance: {fileID: 623775480000691250}
   m_PrefabAsset: {fileID: 0}
@@ -238,6 +259,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -313,10 +335,19 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (4)
+      value: RotaryMeter_Roter (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
+--- !u!4 &2574304364114175351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 2608566406500713116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2950443256949981133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -328,6 +359,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -403,13 +435,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter
+      value: RotaryMeter_Roter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
 --- !u!1 &2699986996003330999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 3006484871544497894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3329171068530426125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
     type: 3}
   m_PrefabInstance: {fileID: 3006484871544497894}
   m_PrefabAsset: {fileID: 0}
@@ -418,6 +459,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -493,10 +535,19 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (1)
+      value: RotaryMeter_Roter (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
+--- !u!4 &3565668365527728428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 3959074198426330823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4192882932770184086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -508,6 +559,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -583,13 +635,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (5)
+      value: RotaryMeter_Roter (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
 --- !u!1 &3755129989891875537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 4097588489374588800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4564176636762372203 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
     type: 3}
   m_PrefabInstance: {fileID: 4097588489374588800}
   m_PrefabAsset: {fileID: 0}
@@ -598,6 +659,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 972344209010140991}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
@@ -673,9 +735,40 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d865bba53e386c84db4d49fbf3d30442,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Box
+      value: RotaryMeter_Box
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3329171068530426125}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3565668365527728428}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269825035952278864}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1090611098324261849}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2574304364114175351}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4564176636762372203}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d865bba53e386c84db4d49fbf3d30442,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5803547103835130719}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d865bba53e386c84db4d49fbf3d30442, type: 3}
 --- !u!4 &4274810710134653960 stripped
 Transform:
@@ -688,6 +781,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4274810710134653960}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
@@ -763,10 +857,19 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMater_Roter (6)
+      value: RotaryMeter_Roter (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbaa905f34bc3f47beb3deeb10a0683, type: 3}
+--- !u!4 &5803547103835130719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fbaa905f34bc3f47beb3deeb10a0683,
+    type: 3}
+  m_PrefabInstance: {fileID: 6269272549078232244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6611715240933937637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fbaa905f34bc3f47beb3deeb10a0683,

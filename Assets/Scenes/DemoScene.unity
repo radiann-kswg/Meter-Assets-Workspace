@@ -1154,7 +1154,7 @@ PrefabInstance:
     - target: {fileID: 223901162865140183, guid: 8b8c7a33e04661848932c2b756e2a8ee,
         type: 3}
       propertyPath: m_Name
-      value: RotalyMeter
+      value: RotaryMeter
       objectReference: {fileID: 0}
     - target: {fileID: 972344209010140991, guid: 8b8c7a33e04661848932c2b756e2a8ee,
         type: 3}
