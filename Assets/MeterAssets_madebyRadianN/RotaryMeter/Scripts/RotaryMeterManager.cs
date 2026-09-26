@@ -1,74 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 回転式（オドメーター型）メーター。Value に向かって各桁のローターを滑らかに回す。
+/// </summary>
 public class RotaryMeterManager : MonoBehaviour
 {
-    #region Prefab用変数定義
-    /// <summary>
-    /// ローターのGameObject
-    /// </summary>
-    [SerializeField]
-    private List<GameObject> roter;
+    /// <summary>ローターのGameObject（要素 0 が 1 の位）</summary>
+    [SerializeField] private List<GameObject> roter;
 
-    /// <summary>
-    /// 表示する数値(入力)
-    /// </summary>
+    /// <summary>表示する数値(入力)。0 〜 10^桁数 に丸められる</summary>
     public float Value = 0.0f;
-    #endregion
 
-    #region private変数定義
-    /// <summary>
-    /// 表示している数値(出力)
-    /// </summary>
-    private float _value = 0.0f;
+    /// <summary>1 桁ぶんの回転角[deg]（10 分割）</summary>
+    private const float DegPerDigit = 36.0f;
+
+    /// <summary>表示している数値(出力)</summary>
+    private float _value;
 
     private float _defaultRotZ = 180.0f;
-    #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
-        _defaultRotZ = roter[0].transform.rotation.eulerAngles.z;
+        if (roter != null && roter.Count > 0) _defaultRotZ = roter[0].transform.rotation.eulerAngles.z;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (roter == null || roter.Count == 0) return;
         float maxValue = Mathf.Pow(10.0f, roter.Count);
+        Value = Mathf.Clamp(Value, 0.0f, maxValue);
+        if (Mathf.Approximately(Value, _value)) return;
 
-        if (Value < 0) Value = 0;
-        if (_value < 0) _value = 0;
-        if (Value >= maxValue) Value = maxValue;
-        if (_value >= maxValue) _value = maxValue;
+        // ponytail: フレームレート依存の指数追従（旧実装と同じ挙動）。厳密な速度が要るなら MoveTowards に変える
+        _value = Mathf.Clamp(_value + (Value - _value) * Time.deltaTime, 0.0f, maxValue);
+        for (int i = 0; i < roter.Count; ++i)
+        {
+            float rotZ = -DigitPosition(_value, i) * DegPerDigit - _defaultRotZ;
+            roter[i].transform.rotation = Quaternion.Euler(180.0f, -90.0f, rotZ);
+        }
+    }
 
-        float rotation = Value - _value;
-        if ((_value <= 0 && rotation < 0) || (_value >= maxValue && rotation > 0))
-        {
-            for(int i = 0; i < roter.Count; ++i)
-            {
-                roter[i].transform.rotation = Quaternion.Euler(180.0f, -90.0f, _defaultRotZ);
-            }
-        }
-        else if (rotation != 0)
-        {
-            float digitRotation = -36.0f * Time.deltaTime * rotation;
-            _value -= digitRotation / 36.0f;
-            float rotZ = -Mathf.Repeat(_value, 10) * 36.0f - _defaultRotZ;
-            roter[0].transform.rotation = Quaternion.Euler(180.0f, -90.0f, rotZ);
-            for (int i = 1; i < roter.Count; ++i)
-            {
-                float digitVal = Mathf.Repeat(_value, Mathf.Pow(10, i)) - (Mathf.Pow(10, i) - 1.0f);
-                if (digitVal >= 0)
-                {
-                    rotZ = -(digitVal + Mathf.Repeat(Mathf.Floor(_value / Mathf.Pow(10, i)), 10)) * 36.0f - _defaultRotZ;
-                }
-                else
-                {
-                    rotZ = -Mathf.Repeat(Mathf.Floor(_value / Mathf.Pow(10, i)), 10) * 36.0f - _defaultRotZ;
-                }
-                roter[i].transform.rotation = Quaternion.Euler(180.0f, -90.0f, rotZ);
-            }
-        }
+    /// <summary>
+    /// 桁 <paramref name="digit"/>（0 = 1 の位）のローター位置を 0〜10 で返します。
+    /// 下位桁がすべて 9 のあいだは繰り上がりに合わせて次の数字へ滑らかに進みます。
+    /// </summary>
+    public static float DigitPosition(float value, int digit)
+    {
+        float unit = Mathf.Pow(10.0f, digit);
+        float shown = Mathf.Repeat(Mathf.Floor(value / unit), 10.0f);
+        float carry = Mathf.Repeat(value, unit) - (unit - 1.0f);
+        return carry >= 0.0f ? shown + carry : shown;
     }
 }
