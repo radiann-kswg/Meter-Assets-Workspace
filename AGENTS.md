@@ -22,7 +22,7 @@ uGUI 向けのメーター UI アセット集（`Assets/MeterAssets_madebyRadian
 | `Assets/Fonts/` | `PenchantManufacture.otf` / `x14y24pxHeadUpDaisy.ttf` はサブモジュールからのコピー（下記）。TMP SDF は `PenchantManufacture_SDF.asset`（Dynamic・ASCII 印字可能文字を事前登録）と `x14y24pxHeadUpDaisy SDF.asset` |
 | `PenchantManufacture_ImageAssets/` | **git サブモジュール**（User 作フォント・CC BY 4.0）。正本は `assets/fonts/PenchantManufacture.otf` |
 | `hicchicc.github.io/` | **git サブモジュール**（患者長ひっく氏の x0y0pxFreeFont）。正本は `00ff/x14y24pxHeadUpDaisy.ttf`。ライセンスは配布サイト https://hicchicc.github.io/00ff/ の規約（2026 年に SIL OFL へ移行予定と README にある） |
-| `BlenderSources/` | FBX の原本 `.blend` の置き場（方針。2026-09-26 時点は未作成＝`RotalyMater_*.fbx` の原本は無い） |
+| `BlenderSources/RotaryMeter.blend` | RotaryMeter の FBX 原本（2021 年の Blender 2.83 ファイルを 2026-09-26 に Blender 5.2 で整理: 画像・マテリアル・メッシュの重複を統合し、テクスチャは `Assets/.../Textures/` を相対参照）。`export_fbx.py` が FBX 書き出しの正本 |
 
 ## 2. 技術スタック
 
@@ -53,7 +53,9 @@ uGUI 向けのメーター UI アセット集（`Assets/MeterAssets_madebyRadian
 
 ## 5. Blender / Blender MCP 運用
 
-- **造形の原本は `BlenderSources/<名前>.blend`、Unity 側は `Assets/MeterAssets_madebyRadianN/<メーター>/Models/*.fbx`**（RSC と同じ運用）。FBX を直したいときは原本を直して再エクスポートし、FBX を手で編集しない。既存の `RotalyMater_Box.fbx` / `RotalyMater_Roter.fbx` は原本が無いので、造形変更が要る時点で Blender に取り込んで `BlenderSources/RotaryMeter.blend` を起こす。
+- **造形の原本は `BlenderSources/<名前>.blend`、Unity 側は `Assets/MeterAssets_madebyRadianN/<メーター>/Models/*.fbx`**（RSC と同じ運用）。FBX を直したいときは原本を直して `BlenderSources/export_fbx.py` で再エクスポートし、FBX を手で編集しない。
+- **RotaryMeter の書き出し規約（`export_fbx.py` に固定・2026-09-26 に既存 FBX と頂点数／三角形数／バウンズ／ノード変換／fileID の一致を確認）**: 1 ファイル 1 オブジェクト（`Box` → `RotalyMater_Box.fbx`、`Roter.000` → `RotalyMater_Roter.fbx`）、`FBX_SCALE_NONE`・`-Z forward / Y up`・bake なし。Unity では node scale 100 × mesh 0.01 になり、`RotalyMeter.prefab` が `RotalyMater_Box` の lscale 1000 で吸収している。**オブジェクト名 `Box` / `Roter.000` はそのまま Unity のメッシュ名＝prefab の参照キー**なので変えない（`.blend` 内のメッシュ・マテリアル・コレクション名は自由）。
+- `.blend` 側の 6 本のローターは 1 メッシュ `Roter` を共有（1 本直せば全部に効く）。`Box` の前面には 3 面共有のエッジが 20 本ある（2.83 時代の重ね面。Unity では 5 年間問題なく見えているので放置。造形をやり直すときに直す）。
 - Blender MCP（`mcp__remote-devices__Blender__*`）は **Blender GUI を起動して N パネル「BlenderMCP」タブの `Start MCP Server` を押すまで接続できない**（`blender -b` では不可）。セッション開始時にアプリ本体が起動している必要がある。GUI 接続側は `execute_blender_code`、`execute_blender_code_for_cli` は環境変数 `BLENDER_PATH` 未設定だと使えない。
 - MCP が無くても `"C:\Program Files (x86)\Steam\steamapps\common\Blenderlender.exe" --background <blend> --python <script.py>`（Blender 5.2 LTS）でヘッドレス実行できる。GUI を塞がずに走らせたいときは `execute_blender_code` から `subprocess.run([bpy.app.binary_path, "--background", ...])`。
 - エクスポートの型（RSC AGENTS 罠 21/32 の要点）: `select_all(action='DESELECT')` → 対象のみ選択 → `use_selection=True`、オブジェクト原点はワールド原点（`transform_apply(location)`）、縮退面を残さない。Unity のインポート設定と軸変換は RSC `AGENTS.md` 3 章 19 を参照。
